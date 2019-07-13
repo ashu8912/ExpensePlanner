@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import "./transaction.dart";
-
+import "./widgets/user_transaction.dart";
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -9,12 +8,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<Transaction> transactions = [
-    Transaction(
-        id: "1", title: "New Shoes", amount: 21.5, date: DateTime.now()),
-    Transaction(
-        id: "2", title: "Vegetables", amount: 34.1, date: DateTime.now())
-  ];
+  String titleInput;
+  String amountInput;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,9 +20,7 @@ class _MyAppState extends State<MyApp> {
       body: Column(
         children: <Widget>[
           Card(child: Container(width: double.infinity, child: Text("CHART!"))),
-          Column(children: transactions.map((tx){
-            return Card(child:Text(tx.title));
-          }).toList())
+          UserTransactions()
         ],
       ),
     ));
